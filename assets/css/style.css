@@ -1,0 +1,55 @@
+:root {
+    /* letra */    
+    --v_white: white;
+    /* fondo */
+    --v_grey: rgb(26, 26, 26);
+    --v_silver: silver;
+    /* botones */
+    --v_lightGrey: #333333;
+    --v_lightBlue: #0045a1;
+    --v_darkBlue: #092443;
+    --v_lightRed: #ce2a37;
+    --v_darkRed: #431d20;
+    /* tabla */
+    --v_darkBlue-05: rgba(9, 36, 67, 0.5);
+    --v_darkRed-05: rgba(67, 29, 32, 0.5);
+    --v_black: black;
+    /* spotify */
+    --v_yellow: #ffc31f;
+}
+
+* {
+    color: var(--v_white);
+    font-family: gowun;
+}
+
+*:not(h1):not(h2):not(h3):not(h4) {
+    font-size: 16px;
+}
+
+body {
+    background: var(--v_silver) url("../img/basic/background.jpg") no-repeat fixed center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.logo {
+    width: 300px;
+}
+
+/* links */
+a:link {
+    color: var(--v_lightBlue);
+}
+
+a:visited {
+    color: var(--v_lightRed);
+}
+
+a:link:active, a:visited:active {
+    color: var(--v_yellow);
+}
