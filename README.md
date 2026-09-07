@@ -9,7 +9,7 @@
 ## ABOUT N3
 > **DISCLAIMER:** This project is part of my professional portfolio. The code is available for public inspection but *is not open source*. All rights reserved; commercial use or redistribution is strictly prohibited
 > 
-> **PUBLISHED WEBAPP:** [N3]() *(Under construction)*
+> **PUBLISHED WEBAPP:** [N3](https://yaiangel13.github.io/N3/) *(Under construction)*
 
 A lightweight Single Page Application (SPA) designed to study English as a helper for Cambridge certifications prep, built from curated notes gathered during personal study sessions
 
