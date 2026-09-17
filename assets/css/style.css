@@ -6,16 +6,21 @@
     --v_silver: silver;
     /* botones */
     --v_lightGrey: #333333;
-    --v_lightBlue: #0045a1;
     --v_darkBlue: #092443;
-    --v_lightRed: #ce2a37;
     --v_darkRed: #431d20;
-    /* tabla */
-    --v_darkBlue-05: rgba(9, 36, 67, 0.5);
-    --v_darkRed-05: rgba(67, 29, 32, 0.5);
-    --v_black: black;
+    --v_lightBlue: #0045a1;
+    --v_lightRed: #ce2a37;
     /* spotify */
     --v_yellow: #ffc31f;
+    /* titulo */
+    --v_cian: #2b87ff;
+    /* resaltar */
+    --v_note_red: #e58088;
+    --v_note_blue: #66a8ff;
+    --v_note_yellow: #ffd666;
+    --v_note_green: #66ffcf;
+    /* links */
+    --v_green: rgb(0, 126, 87);
 }
 
 * {
@@ -28,7 +33,7 @@
 }
 
 body {
-    background: var(--v_silver) url("../img/basic/background.jpg") no-repeat fixed center;
+    background: var(--v_silver) url("../img/basic/background.png") no-repeat fixed center;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -38,7 +43,92 @@ body {
 }
 
 .logo {
-    width: 300px;
+    height: 50px;
+    width: 50px;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    overflow-y: hidden;
+}
+
+#options {
+    background: var(--v_grey);
+    padding: 5px;
+    width: 5%;
+}
+
+.aside {
+    flex: 2 2 10px;
+    margin: 15px 10px 15px 15px;
+    width: 25%;
+}
+
+.content {
+    flex: 5 5;
+    margin: 15px 15px 15px 10px;
+    width: 70%;
+}
+
+.aside, .content {
+    background: var(--v_grey);
+    border-radius: 15px 9px 9px 15px;
+    overflow-y: scroll;
+    padding: 15px;
+    /*visibility: hidden;*/
+}
+
+#options>div {
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 5px; 
+}
+
+#options>div, .navbar {
+    background: var(--v_lightGrey);
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.navbar {
+    padding: 10px; 
+}
+
+.navbar::first-letter {
+    text-transform: uppercase;
+}
+
+/* hovers/selections main menu, navbar & spotify */
+#options>div:hover, .navbar:hover {
+    background: var(--v_darkBlue);
+}
+
+#options>div.selected, .navbar.selected{
+    background: var(--v_darkRed);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0 10px 10px 0;
+    box-shadow: inset 0 0 5px var(--v_lightGrey);
+}
+
+::-webkit-scrollbar-thumb {
+    /* Handle */
+    background: var(--v_darkRed);
+    border-radius: 0 10px 10px 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    /* Handle on hover */
+    background: var(--v_darkBlue);
 }
 
 /* links */
@@ -52,4 +142,84 @@ a:visited {
 
 a:link:active, a:visited:active {
     color: var(--v_yellow);
+}
+
+/* titulos */
+h2, h3, h4 {
+    border-bottom: 2px solid var(--v_white);
+}
+
+h2 {
+    border-color: var(--v_lightRed);
+    color: var(--v_lightRed);
+}
+
+h3 {
+    border-color: var(--v_cian);
+    color: var(--v_cian);
+}
+
+h4 {
+    border-color: var(--v_yellow);
+    color: var(--v_yellow);
+}
+
+/* columnas sin tabla */
+.divCols {
+    display: flex;
+    gap: 20px;
+}
+
+.col {
+    flex: 1;
+}
+
+/* ejercicios, marcar texto como titulo, y cursor */
+.mark, .success {
+    color: var(--v_green);
+}
+
+.fail {
+    color: var(--v_lightRed);
+}
+
+.mark {
+    font-weight: bold;
+}
+
+/* resaltar palabras o silabas */
+.mark_red {
+    color: var(--v_note_red);
+}
+
+.mark_blue {
+    color: var(--v_note_blue);
+}
+
+.mark_yellow {
+    color: var(--v_note_yellow);
+}
+
+.mark_green {
+    color: var(--v_note_green);
+}
+
+/*md files*/
+.md_code_line {
+    background: var(--v_lightGrey);
+    border: 1px solid var(--v_grey);
+    border-radius: 5px;
+    color: var(--v_note_blue);
+    font-style: italic;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 8px;
+}
+
+.md_quote_block {
+    background: var(--v_lightGrey);
+    border-left: 5px solid var(--v_lightBlue);
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
 }
