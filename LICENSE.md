@@ -13,7 +13,7 @@ This software and all associated files in this repository are the exclusive prop
 
 **Third-Party Disclaimer:**
 
-This project integrates services and APIs provided by third parties, including but not limited to ***Spotify***, ***shields badges***, ***GitHub***, ***GitHub Pages*** and ***GitHub Projects***. All trademarks, logos, and brand names are the property of their respective owners. The use of these services does not imply any affiliation with or endorsement by them. These components are used strictly for integration and demonstration purposes within the application and are subject to their own respective terms of service and licensing
+This project integrates services, assets, and APIs provided by third parties, including but not limited to ***Spotify***, ***shields badges***, ***GitHub***, ***GitHub Pages***, ***GitHub Projects*** and the ***Anta*** typeface. All trademarks, logos, and brand names are the property of their respective owners. The use of these services and components does not imply any affiliation with or endorsement by them. These components are used strictly for integration and demonstration purposes within the application and are subject to their own respective terms of service and licensing
 
 For inquiries regarding commercial licensing or further permissions, please contact on:
 - **LinkedIn:** [yeza](https://www.linkedin.com/in/christian-yezallell-angel-fernandez-736923330/) / [yai](https://www.linkedin.com/in/yaiza-priscila-angel-fernandez-aaa9b4146/)
