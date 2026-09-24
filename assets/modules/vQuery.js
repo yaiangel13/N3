@@ -1,7 +1,7 @@
 //vanilla JS framework based on JQuery
 //vQuery constructor
 _vQuery = function (pSelector) {
-	this.vQuery = '1.4.6';
+	this.vQuery = '1.4.7';
 	this.projectName = document.getElementsByTagName('title')[0].innerHTML;
 	this.selector = pSelector;
 
@@ -303,6 +303,14 @@ _vQuery.prototype.triggerEvent = function (pEventName) {
 
 	this.nodes[0].dispatchEvent(new Event(pEventName));
 	return this;
+}
+
+_vQuery.prototype.toggleVisibility = function () {
+	if (this.nodes == undefined) return this;
+
+    var vVisibility = this.css('visibility');
+    vVisibility = (vVisibility == '') ? 'hidden' : vVisibility;
+    this.css('visibility', (vVisibility == 'hidden') ? 'visible' : 'hidden');
 }
 
 _vQuery.prototype.searchValue = function (pValue = null) {
