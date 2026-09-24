@@ -1,7 +1,8 @@
 //vanilla JS framework based on JQuery
 //vQuery constructor
 _vQuery = function (pSelector) {
-	this.vQuery = '1.4.5';
+	this.vQuery = '1.4.6';
+	this.projectName = document.getElementsByTagName('title')[0].innerHTML;
 	this.selector = pSelector;
 
 	let vNodes = document.querySelectorAll(pSelector);
@@ -18,15 +19,15 @@ _vQuery = function (pSelector) {
 _vQuery.prototype.DATA_MODULE_NONE = 'none';
 _vQuery.prototype.LINE_BREAK_UNIX = '\n';
 _vQuery.prototype.LINE_BREAK_MS = '\r\n';
-_vQuery.prototype.MAIN_NOTE_NODE = '#note';
+_vQuery.prototype.MAIN_NOTE_NODE = '#note>#note_content';
 _vQuery.prototype.VERSION_NODE = '#version';
 
 //vQuery utils, can be used with a blank selector
 _vQuery.prototype.addWatermark = function () {
 	var vWatermarkElement = this.createElement({
 		label: 'img',
-		attrs: [{attr: 'src', value: './assets/img/basic/logo.png'}, {attr: 'alt', value: 'knotes logo'},
-			{attr: 'data-watermark', value: 'knotes'}],
+		attrs: [{attr: 'src', value: './assets/img/basic/logo.png'}, {attr: 'alt', value: this.projectName + ' logo'},
+			{attr: 'data-watermark', value: this.projectName}],
 		classes: ['watermark']
 	});
 
@@ -498,16 +499,15 @@ _vQuery.prototype.processMD = function(pMD) {
 	});
 }
 
-_vQuery.prototype.getProjectBuildVersion = function() {
+_vQuery.prototype.getProjectBuildVersion = function(pDecorator = 'v') {
 	    this.ajax({
         method: 'GET',
 		url: './CHANGELOG.md'
     }).then((pResponse) => {
         if(pResponse != undefined && pResponse != '') {
-			var vVersion = pResponse.split(' ')[1];
-			var vBuild = this.parseMDLine(pResponse.split(' ')[2]);
+			var vVersion = pResponse.split(this.checkLineBreak(pResponse))[0].split(' ')[1];
 			//display version & build number
-    		$v(this.VERSION_NODE).attr('data-version', vVersion).attr('data-build', vBuild).innerHTML(vVersion + vBuild);
+    		$v(this.VERSION_NODE).attr('data-version', vVersion).innerHTML(pDecorator + vVersion);
         } else {
             console.log('[EMPTY MD] "./' + pMD + '.md" can\'t be processed');
         }
