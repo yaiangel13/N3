@@ -68,7 +68,7 @@ body {
     display: flex;
     flex: 0 0 100px;
     text-align: center;
-    padding: 5px; 
+    padding: 5px;
 }
 
 #main-wrapper {
@@ -80,6 +80,7 @@ body {
 #main {
     display: flex;
     flex: 1 1;
+    overflow-y: hidden;
 }
 
 #aside, #note {
