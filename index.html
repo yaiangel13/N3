@@ -3,30 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <title>N3</title>
-    <link rel="icon" type="image/x-icon" href="./assets/img/basic/favicon.ico">
-    <link rel="stylesheet" href="./assets/style/style.css"></link>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/x-icon" href="./assets/img/basic/favicon.ico" />
+    <link rel="stylesheet" href="./assets/style/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="./manifest.json" />
 </head>
-<body>    
-    <div class="main">
+<body>
+    <!-- webapp layout -->
+    <div id="layout">
         <div id="options">
-            <div id="chat_bot"><img src="./assets/img/basic/logo.png" alt="logo" class="logo"/></div>
-            <div id="lvlA">A LEVEL</div>
-            <div id="lvlB">B LEVEL</div>
-            <div id="lvlC">C LEVEL</div>
-            <div id="spotify">MUSIC</div>
-            <div id="legal">LEGAL</div>
+            <div id="lvl_a" class="navbar icon">
+                <img src="./assets/img/aside/level_a.png" alt="level A" />
+            </div>
+            <div id="lvl_b" class="navbar icon">
+                <img src="./assets/img/aside/level_b.png" alt="level B" />
+            </div>
+            <div id="lvl_c" class="navbar icon">
+                <img src="./assets/img/aside/level_c.png" alt="level C" />
+            </div>
+            <div id="settings" class="navbar icon">
+                <img src="./assets/img/aside/settings.png" alt="settings" />
+            </div>
         </div>
-        <div id="aside">
-            <div class="navbar">nav 1</div>
-            <div class="navbar">nav 2</div>
-        </div>
-        <div id="note" class="content">
-            <img src="./assets/img/basic/logo.png" alt="logo" class="logo"/>            
+        <div id="main-wrapper">
+            <div id="main">
+                <div id="aside">
+                    <div class="navbar">nav 1</div>
+                    <div class="navbar">nav 2</div>
+                </div>
+                <div id="note">
+                    <div id="notebar">
+                        <div id="issues">
+                            <select id="issue_selector">
+                                <!-- current issue -->
+                                <button>
+                                    <selectedcontent></selectedcontent>
+                                </button>
+                                <!-- issue list -->
+                                <option value="issue1">
+                                    <img src="./assets/img/issues/issue.png" alt="issue" class="icon menu_icon" />
+                                    <span class="issue_name">ISSUE 1</span>
+                                </option>
+                                <option value="issue2">
+                                    <img src="./assets/img/issues/exercise.png" alt="issue" class="icon menu_icon" />
+                                    <span class="issue_name">ISSUE 2</span>
+                                </option>
+                                <option value="issue3">
+                                    <img src="./assets/img/issues/flashcards.png" alt="issue" class="icon menu_icon" />
+                                    <span class="issue_name">ISSUE 3</span>
+                                </option>
+                            </select>
+                        </div>
+                        <div id="practice_options">
+                            <div id="timer">
+                                <img src="./assets/img/issues/time_start.png" alt="timer" class="icon menu_icon" />
+                                <span id="timer_current">00:00</span>
+                            </div>
+                            <div id="review">
+                                <img src="./assets/img/issues/review.png" alt="review" class="icon menu_icon" />
+                                <span>Review</span>
+                            </div>
+                            <div id="score">
+                                <img src="./assets/img/issues/score.png" alt="score" class="icon menu_icon" />
+                                <span id="score_current">0</span>
+                                <span id="score_separator"> / </span>
+                                <span id="score_total">0</span>
+                            </div>
+                        </div>
+                        <div id="paginator">
+                            <img src="./assets/img/issues/arrow_l.png" alt="back" id="paginator_back" class="icon menu_icon" />
+                            <img src="./assets/img/issues/arrow_r.png" alt="forward" id="paginator_forward" class="icon menu_icon" />
+                            <img src="./assets/img/issues/close.png" alt="close" id="paginator_close" class="icon menu_icon" />
+                        </div>
+                    </div>
+                    <div id="note_content">
+                        <img src="./assets/img/basic/logo.png" alt="logo" class="logo" />
+                        <h2>Header title</h2>
+                        <h3>Subtitle</h3>
+                        <h4>Last heading</h4>
+                        <p>
+                            Lorem ipsum, <span class="mark_fuchsia">dolor</span> sit amet consectetur
+                            <span class="mark_red">adipisicing</span> elit. Neque a quidem exercitationem
+                            explicabo at <span class="mark_green">possimus</span> quae voluptates, beatae molestiae
+                            ullam maiores, aperiam <span class="mark_blue">reiciendis</span>
+                            deleniti ut nemo rerum corporis, doloribus excepturi!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="statusbar">
+                <div id="status">Status level</div>
+                <div id="settings">
+                    <img src="./assets/img/aside/music.png" alt="music" id="music" class="icon menu_icon" />
+                    <img src="./assets/img/aside/support.png" alt="support" id="support" class="icon menu_icon" />
+                    <span id="status_bar_separator"> | </span>
+                    <img src="./assets/img/basic/logo.png" alt="logo" class="logo menu_icon" />
+                    <span id="version"></span>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- modal windows -->
+    <div id="spotify-wrapper">
+        <div id="spotify"></div>
+    </div>
+    <div id="n3_helper"></div>
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script type="application/javascript" src="./assets/modules/vQuery.js"></script>
+    <script type="application/javascript" src="./assets/modules/spotify.js"></script>
+    <script>
+        window.onload = function () {
+            $v().getProjectBuildVersion();
+            $v().addWatermark();
+        }();
+    </script>
 </body>
 </html>
