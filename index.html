@@ -26,7 +26,7 @@
                 <img src="./assets/img/aside/settings.png" alt="settings" />
             </div>
         </div>
-        <div id="main-wrapper">
+        <div id="main_wrapper">
             <div id="main">
                 <div id="aside">
                     <div class="navbar">nav 1</div>
@@ -105,13 +105,22 @@
         </div>
     </div>
     <!-- modal windows -->
-    <div id="spotify-wrapper">
+    <div id="spotify_wrapper" class="modal">
         <div id="spotify"></div>
     </div>
-    <div id="n3_helper"></div>
+    <div id="n3_helper_wrapper" class="modal">
+        <div id="n3_helper">
+            <img src="./assets/img/basic/nolja_nugget.png" alt="nolja nugget" id="nolja_nugget" class="icon">
+            <p style="text-align: center;">
+                Hi! I'm Nolja Nugget, right now i'm still learning and indexing info... I can assist you on a near future
+                after release 3.0.0 of N3
+            </p>
+        </div>
+    </div>
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script type="application/javascript" src="./assets/modules/vQuery.js"></script>
     <script type="application/javascript" src="./assets/modules/spotify.js"></script>
+    <script type="application/javascript" src="./assets/modules/noljaNugget.js"></script>
     <script>
         window.onload = function () {
             $v().getProjectBuildVersion();

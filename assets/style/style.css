@@ -1,12 +1,13 @@
 /* general definitions */
 :root {
     /* text */
+    --v_n3_blue: #383850;
     --v_white: #FFF;
-    --v_red: #c51e27;
-    --v_blue: #0039e6;
-    --v_pruple: #a4287d;
-    --v_fuchsia: #e600e6;
-    --v_green: #0da50d;
+    --v_red: #C51E27;
+    --v_blue: #0039E6;
+    --v_pruple: #A4287D;
+    --v_fuchsia: #E600E6;
+    --v_green: #0DA50D;
     /* background */
     --v_grey: #1A1A1A;
     --v_silver: #C0C0C0;
@@ -71,7 +72,7 @@ body {
     padding: 5px;
 }
 
-#main-wrapper {
+#main_wrapper {
     display: flex;
     flex: 20 20;
     flex-direction: column;
@@ -193,13 +194,37 @@ body {
 }
 
 /* modal definition */
-#spotify-wrapper {
-    bottom: 36px;
+.modal {
     position: absolute;
     right: 15px;
     visibility: hidden;
     width: 400px;
     z-index: 999;
+}
+
+#spotify_wrapper {
+    bottom: 36px;
+}
+
+#n3_helper_wrapper {
+    background: var(--v_grey);
+    border: 5px solid var(--v_n3_blue);
+    border-radius: 15px;
+    bottom: 50px;
+    /*height: 70vh;*/
+    overflow-y: scroll;
+}
+
+#n3_helper {
+    align-items: center;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#n3_helper>#nolja_nugget {
+    width: 100px;
 }
 
 /* image definitions */
