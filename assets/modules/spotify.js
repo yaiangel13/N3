@@ -1,7 +1,10 @@
-$v('#music').addEvent('click', (pEvent) => {
-    $v('#spotify-wrapper').toggleVisibility();
-    var vIsSelected = $v('#music').hasClass('selected');
-    (vIsSelected) ? $v('#music').removeClass('selected') : $v('#music').addClass('selected');
+const gSPOTIFY_MODAL = '#spotify_wrapper';
+const gSPOTIFY_MODAL_TRIGGER = '#music';
+
+$v(gSPOTIFY_MODAL_TRIGGER).addEvent('click', (pEvent) => {
+    $v('#settings .selected').clearModals(gSPOTIFY_MODAL_TRIGGER, gSPOTIFY_MODAL);
+    $v(gSPOTIFY_MODAL).toggleVisibility();
+    $v(gSPOTIFY_MODAL_TRIGGER).toggleSelected();
 });
 
 window.onSpotifyIframeApiReady = IFrameAPI => {

@@ -1,7 +1,7 @@
 //vanilla JS framework based on JQuery
 //vQuery constructor
 _vQuery = function (pSelector) {
-	this.vQuery = '1.4.7';
+	this.vQuery = '1.4.8';
 	this.projectName = document.getElementsByTagName('title')[0].innerHTML;
 	this.selector = pSelector;
 
@@ -311,6 +311,44 @@ _vQuery.prototype.toggleVisibility = function () {
     var vVisibility = this.css('visibility');
     vVisibility = (vVisibility == '') ? 'hidden' : vVisibility;
     this.css('visibility', (vVisibility == 'hidden') ? 'visible' : 'hidden');
+}
+
+_vQuery.prototype.toggleSelected = function () {
+	if (this.nodes == undefined) return this;
+
+    var vIsSelected = this.hasClass('selected');
+    (vIsSelected) ? this.removeClass('selected') : this.addClass('selected');
+}
+
+_vQuery.prototype.clearModals = function (pSelfTrigger, pSelfModal) {
+	//clear selections of modal triggers if called on selector
+	if (this.nodes != undefined) {
+		this.nodes.forEach(node => {
+			//prevent trigger of modal selfclose
+			if (pSelfTrigger.startsWith('#')) {
+				pSelfTrigger = pSelfTrigger.substring(1);
+			}
+			if (node.id == pSelfTrigger) return;
+			
+			node.classList.remove('selected');
+		});
+	}
+
+	//hide visible modals
+	document.querySelectorAll('.modal').forEach((modal) => {
+		//prevent selfclose of modal
+		if (pSelfModal.startsWith('#')) {
+			pSelfModal = pSelfModal.substring(1);
+		}
+		if (modal.id == pSelfModal) return;
+
+		//close other modals
+		var vVisibility = modal.style['visibility'];
+	    vVisibility = (vVisibility == '') ? 'hidden' : vVisibility;
+		if (vVisibility != 'hidden') {
+			modal.style['visibility'] = 'hidden';
+		}
+	});
 }
 
 _vQuery.prototype.searchValue = function (pValue = null) {
