@@ -1,11 +1,10 @@
 /* general definitions */
 :root {
     /* text */
-    --v_n3_blue: #383850;
     --v_white: #FFF;
     --v_red: #9C5441;
     --v_blue: #7E95A1;
-    --v_pruple: #867699;
+    --v_purple: #867699;
     --v_fuchsia: #D676AF;
     --v_green: #7A9C8D;
     --v_yellow: #D1B47C;
@@ -274,7 +273,7 @@ body {
 }
 
 .navbar>.icon:hover {
-    background: var(--v_blue);
+    background: var(--v_purple);
 }
 
 .navbar.selected, #settings>.selected {
@@ -282,7 +281,7 @@ body {
 }
 
 .navbar>.icon.selected {
-    background: var(--v_red) !important;
+    background: var(--v_n3_blue) !important;
 }
 
 /* scrollbar */
@@ -341,8 +340,8 @@ h3 {
 }
 
 h4 {
-    border-color: var(--v_pruple);
-    color: var(--v_pruple);
+    border-color: var(--v_purple);
+    color: var(--v_purple);
 }
 
 /* split on columns without table */
@@ -386,7 +385,7 @@ h4 {
 }
 
 .mark_purple {
-    color: var(--v_pruple);
+    color: var(--v_purple);
 }
 
 .mark_yellow {

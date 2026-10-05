@@ -1,4 +1,4 @@
-# 0.2.4
+# 0.2.5
 - Webapp layout and style definition (#3)
 - `WIP` Menu structure definition and functionality (#3)
 - Migrated content from K-NOTES: level A - pronouns (#6)
