@@ -2,12 +2,15 @@
 :root {
     /* text */
     --v_white: #FFF;
-    --v_red: #c51e27;
-    --v_blue: #0039e6;
-    --v_pruple: #a4287d;
-    --v_fuchsia: #e600e6;
-    --v_green: #0da50d;
+    --v_red: #9C5441;
+    --v_blue: #7E95A1;
+    --v_pruple: #867699;
+    --v_fuchsia: #D676AF;
+    --v_green: #7A9C8D;
+    --v_yellow: #D1B47C;
+    --v_orange: #D89774;
     /* background */
+    --v_n3_blue: #383850;
     --v_grey: #1A1A1A;
     --v_silver: #C0C0C0;
     /* buttons */
@@ -279,6 +282,7 @@ h2, h3, h4 {
 h2 {
     border-color: var(--v_blue);
     color: var(--v_blue);
+    margin-top: 0;
 }
 
 h3 {
@@ -329,6 +333,18 @@ h4 {
 
 .mark_green {
     color: var(--v_green);
+}
+
+.mark_purple {
+    color: var(--v_pruple);
+}
+
+.mark_yellow {
+    color: var(--v_yellow);
+}
+
+.mark_orange {
+    color: var(--v_orange);
 }
 
 /* md files */
