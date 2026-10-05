@@ -54,6 +54,12 @@ gMenu = {
                     {title: 'TEST NAV 3.1', type: gATTR_EXERCISE, file: 'nav3_1'},
                     {title: 'NAV 3.2', type: gATTR_NOTE, file: 'nav3_2'},
                     {title: 'FLASHCARDS NAV 3', type: gATTR_FLASHCARD, file: 'nav3'}
+                ]},
+                {id: 'pronouns', title: 'Pronouns', issues: [
+                    {title: 'Personal Pronouns', type: gATTR_NOTE, file: 'personal'},
+                    {title: 'Possessives Pronouns', type: gATTR_NOTE, file: 'possessives'},
+                    {title: 'Demostrative Pronouns', type: gATTR_NOTE, file: 'demostrative'},
+                    {title: 'Reflexive Pronouns', type: gATTR_NOTE, file: 'reflexive'}
                 ]}
             ]
         },
