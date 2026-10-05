@@ -22,37 +22,19 @@
             <div id="lvl_c" class="navbar icon">
                 <img src="./assets/img/aside/level_c.png" alt="level C" />
             </div>
-            <div id="settings" class="navbar icon">
+            <div id="legal" class="navbar icon">
                 <img src="./assets/img/aside/settings.png" alt="settings" />
             </div>
         </div>
         <div id="main_wrapper">
             <div id="main">
-                <div id="aside">
-                    <div class="navbar">nav 1</div>
-                    <div class="navbar">nav 2</div>
-                </div>
+                <div id="aside"></div>
                 <div id="note">
                     <div id="notebar">
                         <div id="issues">
+                            <img src="./assets/img/issues/issue.png" alt="issue type icon" id="issues_icon" class="icon menu_icon" />
                             <select id="issue_selector">
-                                <!-- current issue -->
-                                <button>
-                                    <selectedcontent></selectedcontent>
-                                </button>
                                 <!-- issue list -->
-                                <option value="issue1">
-                                    <img src="./assets/img/issues/issue.png" alt="issue" class="icon menu_icon" />
-                                    <span class="issue_name">ISSUE 1</span>
-                                </option>
-                                <option value="issue2">
-                                    <img src="./assets/img/issues/exercise.png" alt="issue" class="icon menu_icon" />
-                                    <span class="issue_name">ISSUE 2</span>
-                                </option>
-                                <option value="issue3">
-                                    <img src="./assets/img/issues/flashcards.png" alt="issue" class="icon menu_icon" />
-                                    <span class="issue_name">ISSUE 3</span>
-                                </option>
                             </select>
                         </div>
                         <div id="practice_options">
@@ -77,23 +59,11 @@
                             <img src="./assets/img/issues/close.png" alt="close" id="paginator_close" class="icon menu_icon" />
                         </div>
                     </div>
-                    <div id="note_content">
-                        <img src="./assets/img/basic/logo.png" alt="logo" class="logo" />
-                        <h2>Header title</h2>
-                        <h3>Subtitle</h3>
-                        <h4>Last heading</h4>
-                        <p>
-                            Lorem ipsum, <span class="mark_fuchsia">dolor</span> sit amet consectetur
-                            <span class="mark_red">adipisicing</span> elit. Neque a quidem exercitationem
-                            explicabo at <span class="mark_green">possimus</span> quae voluptates, beatae molestiae
-                            ullam maiores, aperiam <span class="mark_blue">reiciendis</span>
-                            deleniti ut nemo rerum corporis, doloribus excepturi!
-                        </p>
-                    </div>
+                    <div id="note_content"></div>
                 </div>
             </div>
             <div id="statusbar">
-                <div id="status">Status level</div>
+                <div id="status"></div>
                 <div id="settings">
                     <img src="./assets/img/aside/music.png" alt="music" id="music" class="icon menu_icon" />
                     <img src="./assets/img/aside/support.png" alt="support" id="support" class="icon menu_icon" />
@@ -119,12 +89,15 @@
     </div>
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script type="application/javascript" src="./assets/modules/vQuery.js"></script>
+    <script type="application/javascript" src="./assets/options/optMenu.js"></script>
+    <script type="application/javascript" src="./assets/modules/menu.js"></script>
     <script type="application/javascript" src="./assets/modules/spotify.js"></script>
     <script type="application/javascript" src="./assets/modules/noljaNugget.js"></script>
     <script>
         window.onload = function () {
             $v().getProjectBuildVersion();
             $v().addWatermark();
+            loadLevelEvents();
         }();
     </script>
 </body>

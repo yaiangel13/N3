@@ -37,6 +37,12 @@
     font-size: 16px;
 }
 
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
 /* layout definition */
 body {
     background-color: var(--v_lightGrey);
@@ -67,7 +73,6 @@ body {
 
 #options>div {
     display: flex;
-    flex: 0 0 100px;
     text-align: center;
     padding: 5px;
 }
@@ -87,7 +92,7 @@ body {
 #aside, #note {
     background: var(--v_grey);
     border-radius: 15px 9px 9px 15px;
-    /*visibility: hidden;*/
+    visibility: hidden;
 }
 
 #aside, #note>#note_content {
@@ -99,6 +104,12 @@ body {
     flex: 3 3;
     margin: 15px 10px 15px 15px;
     width: 25%;
+}
+
+#aside>.navbar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .navbar {
@@ -133,7 +144,7 @@ body {
     padding: 5px;
 }
 
-#note>#notebar>#practice_options, #note>#notebar>#practice_options>*, #note>#notebar>#paginator {
+#note>#notebar>#issues, #note>#notebar>#practice_options, #note>#notebar>#practice_options>*, #note>#notebar>#paginator {
     align-items: center;
     display: flex;
     flex: 1 1;
@@ -143,6 +154,8 @@ body {
 
 #note>#notebar>#issues {
     flex: 4 4;
+    justify-content: left;
+    gap: 5px;
 }
 
 #note>#notebar>#practice_options {
@@ -193,6 +206,14 @@ body {
     gap: 5px;
 }
 
+#statusbar>#settings>#status_bar_separator {
+    color: var(--v_lightGrey);
+}
+
+#statusbar>#settings>#version {
+    color: var(--v_blue);
+}
+
 /* modal definition */
 .modal {
     position: absolute;
@@ -208,7 +229,7 @@ body {
 
 #n3_helper_wrapper {
     background: var(--v_grey);
-    border: 5px solid var(--v_n3_blue);
+    border: 5px solid var(--v_blue);
     border-radius: 15px;
     bottom: 50px;
     /*height: 70vh;*/
@@ -232,8 +253,8 @@ body {
     aspect-ratio: 1/1;
 }
 
-.menu_icon {
-    height: 25px;
+.menu_icon, select .menu_icon {
+    height: 23px;
 }
 
 .logo {
@@ -244,16 +265,20 @@ body {
     height: 14px;
 }
 
-select .menu_icon {
-    height: 22px;
-}
-
 /* hover/selection interactions */
 .navbar:hover, #settings>#music:hover, #settings>#support:hover {
     background: var(--v_blue);
 }
 
+.navbar>.icon:hover {
+    background: var(--v_blue);
+}
+
 .navbar.selected, #settings>.selected {
+    background: var(--v_red) !important;
+}
+
+.navbar>.icon.selected {
     background: var(--v_red) !important;
 }
 

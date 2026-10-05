@@ -9,6 +9,8 @@
 ## ABOUT N3
 > **DISCLAIMER:** This project is part of my professional portfolio. The code is available for public inspection but *is not open source*. All rights reserved; commercial use or redistribution is strictly prohibited
 > 
+> **PROJECT CONTEXT:** N3 supersedes [K-NOTES ~ K-주석](https://github.com/esckelethor/knotes) after release 5.0. Building upon the core concepts of its predecessor, N3 expands into a dedicated webapp tailored specifically for English learning and Cambridge certification prep, consolidating active development into a specialized platform
+> 
 > **PUBLISHED WEBAPP:** [N3](https://yaiangel13.github.io/N3/) *(Under construction)*
 
 A lightweight Single Page Application (SPA) designed to study English as a helper for Cambridge certifications prep, built from curated notes gathered during personal study sessions

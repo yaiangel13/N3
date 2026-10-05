@@ -1,5 +1,5 @@
-# 0.2.2
+# 0.2.3
 - Webapp layout and style definition
-- Menu structure definition
+- `WIP` Menu structure definition and functionality
 - `VQUERY 1.4.8` custom JS framework integration
 - `SPOTIFY` iFrame API v1 integration
