@@ -1,4 +1,4 @@
-# 0.2.9
+# 0.2.10
 - Webapp layout and style definition (#3)
 - `WIP` Menu structure definition and functionality (#3)
 - Migrated content from K-NOTES: level A - pronouns, articles, prepositions, nouns, adjetives, verbs, sentence structure, present verbs (#6)
