@@ -70,6 +70,13 @@ gMenu = {
                     {title: 'Prepositions of place', type: gATTR_NOTE, file: 'place'},
                     {title: 'Prepositions of time', type: gATTR_NOTE, file: 'time'},
                     {title: 'Prepositions of movement', type: gATTR_NOTE, file: 'movement'}
+                ]},
+                {id: 'nouns', title: 'Nouns', issues: [
+                    {title: 'Basic Nouns', type: gATTR_NOTE, file: 'nouns'},
+                    {title: 'Proper Nouns', type: gATTR_NOTE, file: 'proper'},
+                    {title: 'Countable and Uncontable Nouns', type: gATTR_NOTE, file: 'countable'},
+                    {title: 'Quantifiers', type: gATTR_NOTE, file: 'quantifiers'},
+                    {title: 'There Be', type: gATTR_NOTE, file: 'there_be'}
                 ]}
             ]
         },
