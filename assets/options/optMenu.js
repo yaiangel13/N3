@@ -30,11 +30,11 @@ gMenu = {
             id: 'legal',
             title: 'About N3, legal info and preferences',
             nav: [
-                {id: 'about', title: 'About N3', attributes: [gATTR_MD], issues: [{file: 'readme'}]},
-                {id: 'changelog', title: 'Version history', attributes: [gATTR_MD], issues: [{file: 'changelog'}]},
-                {id: 'license', title: 'N3 License', attributes: [gATTR_MD], issues: [{file: 'license'}]},
+                {id: 'about', title: 'About N3', attributes: [gATTR_MD], issues: [{file: 'README'}]},
+                {id: 'changelog', title: 'Version history', attributes: [gATTR_MD], issues: [{file: 'CHANGELOG'}]},
+                {id: 'license', title: 'N3 License', attributes: [gATTR_MD], issues: [{file: 'LICENSE'}]},
                 {id: 'code_of_conduct', title: 'Code of conduct and terms of use', attributes: [gATTR_MD], issues: [
-                    {file: 'code_of_conduct'}
+                    {file: 'CODE_OF_CONDUCT'}
                 ]},
                 {id: 'user_manual', title: 'User manual', attributes: [gATTR_DISABLED, gATTR_FILE]},
                 {id: 'settings', title: 'Settings', attributes: [gATTR_DISABLED]},
