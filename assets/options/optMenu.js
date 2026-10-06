@@ -60,6 +60,16 @@ gMenu = {
                     {title: 'Possessives Pronouns', type: gATTR_NOTE, file: 'possessives'},
                     {title: 'Demostrative Pronouns', type: gATTR_NOTE, file: 'demostrative'},
                     {title: 'Reflexive Pronouns', type: gATTR_NOTE, file: 'reflexive'}
+                ]},
+                {id: 'articles', title: 'Articles', issues: [
+                    {title: 'Definite Article', type: gATTR_NOTE, file: 'definite'},
+                    {title: 'Indefinite Article', type: gATTR_NOTE, file: 'indefinite'}
+                ]},
+                {id: 'preposition', title: 'Prepositions', issues: [
+                    {title: 'Basic Prepositions', type: gATTR_NOTE, file: 'basic'},
+                    {title: 'Prepositions of place', type: gATTR_NOTE, file: 'place'},
+                    {title: 'Prepositions of time', type: gATTR_NOTE, file: 'time'},
+                    {title: 'Prepositions of movement', type: gATTR_NOTE, file: 'movement'}
                 ]}
             ]
         },
