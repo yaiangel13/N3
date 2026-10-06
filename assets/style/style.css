@@ -133,17 +133,14 @@ body {
     width: 70%;
 }
 
-#note, #note>#notebar {
-    border-radius: 15px 15px 0px 0px;
-}
-
 #note>#notebar {
     align-items: center;
+    border-radius: 15px 15px 0px 0px;
     background: var(--v_lightGrey);
     display: flex;
     flex: 1 1;
     justify-content: space-between;
-    padding: 5px;
+    padding: 5px 10px;
 }
 
 #note>#notebar>#issues, #note>#notebar>#practice_options, #note>#notebar>#practice_options>*, #note>#notebar>#paginator {
@@ -166,6 +163,19 @@ body {
 
 #note>#notebar>#practice_options>div {
     gap: 5px;
+}
+
+#practice_options>#review {
+    background-color: var(--v_n3_blue);
+    border-radius: 15px;
+}
+
+#practice_options>#review>img {
+    padding-left: 10px;
+}
+
+#practice_options>#review>span {
+    padding: 5px 10px 5px 0px;
 }
 
 #note>#notebar>#paginator {
@@ -231,7 +241,7 @@ body {
 
 #n3_helper_wrapper {
     background: var(--v_grey);
-    border: 5px solid var(--v_blue);
+    border: 5px solid var(--v_n3_blue);
     border-radius: 15px;
     bottom: 50px;
     /*height: 70vh;*/
@@ -268,7 +278,7 @@ body {
 }
 
 /* hover/selection interactions */
-.navbar:hover, #settings>#music:hover, #settings>#support:hover {
+.navbar:hover, #settings>#music:hover, #settings>#support:hover, #practice_options>#review:hover {
     background: var(--v_blue);
 }
 
@@ -290,19 +300,19 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    border-radius: 0 10px 10px 0;
-    box-shadow: inset 0 0 5px var(--v_lightGrey);
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: inset 0px 0px 5px var(--v_lightGrey);
 }
 
 #note>#note_content::-webkit-scrollbar-track {
-    border-radius: 0 0px 10px 0;
-    box-shadow: inset 0 0 5px var(--v_lightGrey);
+    border-radius: 0px 0px 10px 0px;
+    box-shadow: inset 0px 0px 5px var(--v_lightGrey);
 }
 
 ::-webkit-scrollbar-thumb {
     /* Handle */
     background: var(--v_red);
-    border-radius: 0 10px 10px 0;
+    border-radius: 0px 10px 10px 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -423,9 +433,19 @@ select, ::picker(select) {
 
 select {
     border: none;
-    background: var(--v_lightGrey);
+    background-color: var(--v_n3_blue);
     border-radius: 15px;
     padding: 5px;
+    width: 350px;
+}
+
+select.disabled {
+    background-color: var(--v_lightGrey);
+    opacity: 1;
+}
+
+select.disabled::picker-icon {
+    opacity: 0;
 }
 
 select::picker-icon {
@@ -472,9 +492,11 @@ option:last-of-type {
 
 option:checked {
     background: var(--v_red) !important;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
-option:hover {
+select:hover, option:hover {
     background: var(--v_blue);
 }
 

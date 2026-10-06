@@ -1,6 +1,26 @@
 var gCurrentLevel = null;
 var gCurrentIssue = null;
 
+setPracticeOptions = function (pEnable) {
+    if (pEnable) {
+        $v('#practice_options').removeClass('disabled');
+    } else {
+        $v('#practice_options').addClass('disabled');
+    }
+}
+
+setPaginartor = function (pEnable) {
+    if (pEnable) {
+        $v('#paginator>#paginator_back').removeClass('disabled');
+        $v('#paginator>#paginator_forward').removeClass('disabled');
+        $v('#issues>#issue_selector').removeClass('disabled');
+    } else {
+        $v('#paginator>#paginator_back').addClass('disabled');
+        $v('#paginator>#paginator_forward').addClass('disabled');
+        $v('#issues>#issue_selector').addClass('disabled');
+    }
+}
+
 clearIssueSelector = function () {
     $v('#issues>#issue_selector>button>selectedcontent').innerHTML('');
     
@@ -46,32 +66,58 @@ getIssueSelectorIcon = function (pIssueType) {
     }
 }
 
+getIssuePathByID = function (pIssueType, pIssueFile, pNav) {
+    var vPathFiller = '';
+    switch (pIssueType) {
+        case gATTR_EXAM:
+            vPathFiller = gPATH_EXAM;
+            break;
+        case gATTR_EXERCISE:
+            vPathFiller = gPATH_EXERCISE;
+            break;
+        case gATTR_FLASHCARD:
+            vPathFiller = gPATH_FLASHCARD;
+            break;
+        case gATTR_NOTE:
+        default:
+            vPathFiller = gPATH_NOTE;
+            break;
+    }
+
+    return pNav + vPathFiller + pIssueFile;
+}
+
 setOnChangeIssueSelector = function () {
     $v('#issues>#issue_selector').addEvent('change', (pEvent) => {
         var vTriggerValue = pEvent.target.value;
         $v('#issues>#issue_selector>option').nodes.forEach(pNode => {
             if (pNode.innerText == vTriggerValue) {
+                //update selected issue icon
                 $v('#issues>#issues_icon').attr('src', pNode.firstChild.src);
+                //enable practice options if proceed
+                setPracticeOptions(([gATTR_EXAM, gATTR_EXERCISE].includes(pNode.dataset.context)) ? true : false);
             }
         });
-    })
+    });
 }
 
-loadIssueSelector = function (pIssues) {
+loadIssueSelector = function (pIssues, pNav) {
     clearIssueSelector();
     
     pIssues.forEach(pIssue => {
         var vIssueIcon = getIssueSelectorIcon(pIssue.type);
+        var vIssueID = getIssuePathByID(pIssue.type, pIssue.file, pNav);
         
         var vOptionElement = $v().createElement({
             label: 'option',
-            id: pIssue.file,
+            id: vIssueID,
+            attrs: [{attr: 'data-context', value: pIssue.type}]
         });
 
         var vOptionImg = $v().createElement({
             label: 'img',
             classes: ['icon','menu_icon'],
-            attrs: [{attr: 'src', value: vIssueIcon},{attr: 'alt', value: vIssueIcon.split('/').pop().split('.')[0]}]
+            attrs: [{attr: 'src', value: vIssueIcon}, {attr: 'alt', value: vIssueIcon.split('/').pop().split('.')[0]}]
         });
 
         var vOptionSpan = $v().createElement({
@@ -82,7 +128,7 @@ loadIssueSelector = function (pIssues) {
 
         //append issue on selector
         $v('#issues>#issue_selector').appendChilds(vOptionElement);
-        $v('#issues>#issue_selector>#' + pIssue.file).appendChilds([vOptionImg, vOptionSpan]);
+        $v('#issues>#issue_selector>#' + vIssueID).appendChilds([vOptionImg, vOptionSpan]);
     });
 
     //update selector icon to match first issue type
@@ -95,44 +141,59 @@ loadContentEvent = function (pEvent) {
     var vTriggerID = pEvent.currentTarget.id;
     var vContext = $v('#' + vTriggerID).attr('data-context');
     var vDeepLevel = $v('#' + vTriggerID).attr('data-deep').split('-');
-    vIssues = gMenu.levels[vDeepLevel[0]].nav[vDeepLevel[1]].issues;
     
-    console.log(vTriggerID);
+    console.log('[LOAD CONTENT TRIGGER] ' + vTriggerID);
     if (vContext != gATTR_EXAM) {
         if ($v('#' + vTriggerID).attr('data-issues') == 'true') {
-            gCurrentIssue = vIssues[0].file;
-            loadIssueSelector(vIssues);
+            var vIssues = gMenu.levels[vDeepLevel[0]].nav[vDeepLevel[1]].issues;
+            //set current issue to main issue of nav
+            gCurrentIssue = getIssuePathByID(vIssues[0].type, vIssues[0].file, vTriggerID);
+            loadIssueSelector(vIssues, vTriggerID);
+            setPaginartor((vIssues.length > 1) ? true : false);
+        } else {
+            setPaginartor(false);
         }
+    } else {
+        setPaginartor(false);
     }
+    console.log('[CURRENT ISSUE] ' + gCurrentIssue);
+
+    //disable practice options as mostly all context don't use them
+    setPracticeOptions(false);
 
     switch (vContext) {
         case gATTR_MD:
             loadIssueSelector([{
                 title: pEvent.currentTarget.innerHTML,
                 type: vContext,
-                file: gCurrentIssue
+                file: vIssues[0].file
             }]);
             //process MD file and break execution
-            $v().processMD(gCurrentIssue);
+            $v().processMD(vIssues[0].file);
             $v('#note').css('visibility','visible');
             return;
         case gATTR_EXAM:
+            //set current issue to exam of nav
+            gCurrentIssue = vTriggerID;
             loadIssueSelector([{
                 title: 'EXAM: ' + pEvent.currentTarget.parentElement.innerText,
                 type: vContext,
-                file: vTriggerID.split('-').slice(-1)}]);
+                file: vTriggerID.split('-').slice(-1)
+            }]);
+            //enable practice options
+            setPracticeOptions(true);
             //call practice module
             break;
         case gATTR_FILE:
             //call file process module
             break;
         case gATTR_NAV:
-            vTriggerID = gCurrentIssue;
         default:
             //nothing extra to do, just load content
             break;
     }
-    $v($v().MAIN_NOTE_NODE).loadContent(vTriggerID);
+
+    $v($v().MAIN_NOTE_NODE).loadContent(gCurrentIssue);
     $v('#note').css('visibility','visible');
 }
 
@@ -173,11 +234,6 @@ parseLevelMenu = function () {
                             case gATTR_DISABLED:
                                 $v('#aside>#' + vNavID).addClass('disabled');
                                 break;
-                            case gATTR_NAV:
-                            case gATTR_MD:
-                            case gATTR_FILE:
-                                $v('#aside>#' + vNavID).attr('data-context', pAttribute);
-                                break;
                             case gATTR_EXAM:
                                 var vExamID = vNavID + gPATH_EXAM + vNavID.split('-')[1];
                                 var vBtnExam = $v().createElement({
@@ -210,6 +266,12 @@ parseLevelMenu = function () {
                                     }
                                     pEvent.stopPropagation();
                                 });
+                                break;
+                            case gATTR_NAV:
+                            case gATTR_MD:
+                            case gATTR_FILE:
+                            default:
+                                $v('#aside>#' + vNavID).attr('data-context', pAttribute);
                                 break;
                         }
                     });

@@ -13,6 +13,7 @@ const gATTR_EXERCISE = 'ex'; //exercise, process with `practice` module
 const gATTR_FLASHCARD = 'fs'; //flashcards, process with `practice` module
 
 //ISSUE FOLDERS
+const gPATH_NOTE = '-';
 const gPATH_EXAM = '-practice-exam-';
 const gPATH_EXERCISE = '-practice-ex-';
 const gPATH_FLASHCARD = '-practice-fs-';
