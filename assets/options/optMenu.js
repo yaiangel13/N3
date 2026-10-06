@@ -87,6 +87,15 @@ gMenu = {
                     {title: 'Short Forms', type: gATTR_NOTE, file: 'short_forms'},
                     {title: 'Have / Have got', type: gATTR_NOTE, file: 'have'},
                     {title: 'Modal Verbs', type: gATTR_NOTE, file: 'modal'}
+                ]},
+                {id: 'sentence_structure', title: 'Sentence Structure', issues: [
+                    {title: 'Constructing sentences', type: gATTR_NOTE, file: 'constructing'},
+                    {title: 'Imperative Sentences', type: gATTR_NOTE, file: 'imperative'}
+                ]},
+                {id: 'present', title: 'Verbs Tenses: Present', issues: [
+                    {title: 'Present Simple', type: gATTR_NOTE, file: 'simple'},
+                    {title: 'Present Continuous', type: gATTR_NOTE, file: 'continuous'},
+                    {title: 'Continuous Verb Tenses', type: gATTR_NOTE, file: 'tenses'}
                 ]}
             ]
         },
