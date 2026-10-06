@@ -77,6 +77,16 @@ gMenu = {
                     {title: 'Countable and Uncontable Nouns', type: gATTR_NOTE, file: 'countable'},
                     {title: 'Quantifiers', type: gATTR_NOTE, file: 'quantifiers'},
                     {title: 'There Be', type: gATTR_NOTE, file: 'there_be'}
+                ]},
+                {id: 'articles', title: 'Adjetives', issues: [
+                    {title: 'Adjetives', type: gATTR_NOTE, file: 'adjetives'}
+                ]},
+                {id: 'verbs', title: 'Verbs', issues: [
+                    {title: 'Verbs', type: gATTR_NOTE, file: 'basic'},
+                    {title: 'To Be', type: gATTR_NOTE, file: 'to_be'},
+                    {title: 'Short Forms', type: gATTR_NOTE, file: 'short_forms'},
+                    {title: 'Have / Have got', type: gATTR_NOTE, file: 'have'},
+                    {title: 'Modal Verbs', type: gATTR_NOTE, file: 'modal'}
                 ]}
             ]
         },
