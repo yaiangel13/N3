@@ -103,6 +103,9 @@ gMenu = {
                     {title: 'Ordinal Numbers', type: gATTR_NOTE, file: 'ordinal'},
                     {title: 'The Date', type: gATTR_NOTE, file: 'date'},
                     {title: 'Time', type: gATTR_NOTE, file: 'time'}
+                ]},
+                {id: 'vocabulary', title: 'Vocabulary', issues: [
+                    {title: 'CHristmas Vocabulary', type: gATTR_NOTE, file: 'christmas'}
                 ]}
             ]
         },
