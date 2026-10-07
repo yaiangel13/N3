@@ -1,26 +1,7 @@
 var gCurrentLevel = null;
 var gCurrentIssue = null;
 
-setPracticeOptions = function (pEnable) {
-    if (pEnable) {
-        $v('#practice_options').removeClass('disabled');
-    } else {
-        $v('#practice_options').addClass('disabled');
-    }
-}
-
-setPaginartor = function (pEnable) {
-    if (pEnable) {
-        $v('#paginator>#paginator_back').removeClass('disabled');
-        $v('#paginator>#paginator_forward').removeClass('disabled');
-        $v('#issues>#issue_selector').removeClass('disabled');
-    } else {
-        $v('#paginator>#paginator_back').addClass('disabled');
-        $v('#paginator>#paginator_forward').addClass('disabled');
-        $v('#issues>#issue_selector').addClass('disabled');
-    }
-}
-
+//clear functions
 clearIssueSelector = function () {
     $v('#issues>#issue_selector>button>selectedcontent').innerHTML('');
     
@@ -52,6 +33,52 @@ clearLevel = function () {
     clearIssueSelector();
 }
 
+clearNote = function () {
+    //clear globals
+    gCurrentIssue = null;
+    
+    //hide and clear note
+    $v('#aside>div.selected').removeClass('selected');
+    $v($v().MAIN_NOTE_NODE).innerHTML('');
+    $v('#note').css('visibility','hidden');
+    //clear issues
+    clearIssueSelector();
+}
+
+clearNoteStatusbar = function () {
+    clearIssueSelector();
+    resetPracticeOptions();
+}
+
+//paginator functionality
+setPracticeOptions = function (pEnable) {
+    if (pEnable) {
+        $v('#practice_options').removeClass('disabled');
+    } else {
+        $v('#practice_options').addClass('disabled');
+    }
+}
+
+setPaginartor = function (pEnable) {
+    if (pEnable) {
+        $v('#paginator>#paginator_back').removeClass('disabled');
+        $v('#paginator>#paginator_forward').removeClass('disabled');
+        $v('#issues>#issue_selector').removeClass('disabled');
+    } else {
+        $v('#paginator>#paginator_back').addClass('disabled');
+        $v('#paginator>#paginator_forward').addClass('disabled');
+        $v('#issues>#issue_selector').addClass('disabled');
+    }
+}
+
+setPaginatorClose = function () {
+    $v('#paginator>#paginator_close').addEvent('click', (pEvent) => {
+        clearNote();
+        clearNoteStatusbar();
+    });
+}
+
+//issue selector functionality
 getIssueSelectorIcon = function (pIssueType) {
     switch (pIssueType) {
         case gATTR_EXAM:
@@ -137,6 +164,7 @@ loadIssueSelector = function (pIssues, pNav) {
     setOnChangeIssueSelector();
 }
 
+//content functionality
 loadContentEvent = function (pEvent) {
     var vTriggerID = pEvent.currentTarget.id;
     var vContext = $v('#' + vTriggerID).attr('data-context');
@@ -197,6 +225,7 @@ loadContentEvent = function (pEvent) {
     $v('#note').css('visibility','visible');
 }
 
+//level functionality
 parseLevelMenu = function () {
     gMenu.levels.forEach((pLevel, pIdxLevel) => {
         if (pLevel.id == gCurrentLevel) {
@@ -219,12 +248,22 @@ parseLevelMenu = function () {
 
                 //set nav event
                 $v('#aside>#' + vNavID).addEvent('click', (pEvent) => {
-                    //clear current selected nav and/or exam
-                    $v('#aside>div.selected').removeClass('selected');
-                    $v('#aside>div>img').removeClass('selected');
-                    //set event nav and load his content
-                    $v('#' + pEvent.currentTarget.id).toggleSelected();
-                    loadContentEvent(pEvent);
+                    var vEventTarget = pEvent.currentTarget.id;
+                    var vCurrentLevel = $v('#aside>div.selected').attr('id');
+
+                    //clear current level
+                    clearNote();
+                    resetPracticeOptions();
+
+                    //if same level triggered prevent reload
+                    if (vCurrentLevel != vEventTarget) {
+                        //clear current selected nav and/or exam
+                        $v('#aside>div.selected').removeClass('selected');
+                        $v('#aside>div>img').removeClass('selected');
+                        //set event nav and load his content
+                        $v('#' + pEvent.currentTarget.id).toggleSelected();
+                        loadContentEvent(pEvent);
+                    }
                 });
 
                 //set attributes if need
@@ -254,8 +293,8 @@ parseLevelMenu = function () {
                                     var vCurrentExam = $v('#aside>div>img.selected').attr('id');
 
                                     //clear current selected exam and his nav
-                                    $v('#aside>div.selected').removeClass('selected');
                                     $v('#aside>div>img').removeClass('selected');
+                                    clearNote();
 
                                     //if same exam triggered prevent reload
                                     if (vCurrentExam != vEventTarget) {
@@ -288,6 +327,7 @@ parseLevelMenu = function () {
 
 loadLevelEvents = function () {
     $v('#statusbar>#status').innerHTML(gDEFAULT_TITLE);
+    setPaginatorClose();
 
     $v('#options>div').addEvent('click', (pEvent) => {
         var vEventTarget = pEvent.currentTarget.id;

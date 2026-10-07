@@ -44,18 +44,6 @@ gMenu = {
             id: 'lvl_a',
             title: 'Notes for level A: Movers (A1) & Flyers (A2)',
             nav: [
-                {id: 'nav1', title: 'Level A: Nav1', attributes: [gATTR_DISABLED]},
-                {id: 'nav2', title: 'Level A: Nav2', attributes: [gATTR_EXAM], issues: [
-                    {title: 'NAV 2.1', type: gATTR_NOTE, file: 'nav2_1'},
-                    {title: 'NAV 2.2', type: gATTR_NOTE, file: 'nav2_2'},
-                    {title: 'NAV 2.3', type: gATTR_NOTE, file: 'nav2_3'}
-                ]},
-                {id: 'nav3', title: 'Level A: Nav3', attributes: [gATTR_EXAM], issues: [
-                    {title: 'NAV 3.1', type: gATTR_NOTE, file: 'nav3_1'},
-                    {title: 'TEST NAV 3.1', type: gATTR_EXERCISE, file: 'nav3_1'},
-                    {title: 'NAV 3.2', type: gATTR_NOTE, file: 'nav3_2'},
-                    {title: 'FLASHCARDS NAV 3', type: gATTR_FLASHCARD, file: 'nav3'}
-                ]},
                 {id: 'pronouns', title: 'Pronouns', issues: [
                     {title: 'Personal Pronouns', type: gATTR_NOTE, file: 'personal'},
                     {title: 'Possessives Pronouns', type: gATTR_NOTE, file: 'possessives'},
@@ -105,7 +93,7 @@ gMenu = {
                     {title: 'Time', type: gATTR_NOTE, file: 'time'}
                 ]},
                 {id: 'vocabulary', title: 'Vocabulary', issues: [
-                    {title: 'CHristmas Vocabulary', type: gATTR_NOTE, file: 'christmas'}
+                    {title: 'Christmas Vocabulary', type: gATTR_NOTE, file: 'christmas'}
                 ]}
             ]
         },
@@ -113,34 +101,14 @@ gMenu = {
             id: 'lvl_b',
             title: 'Notes for level B: Preliminary (B1) & First (B2)',
             nav: [
-                {id: 'nav1', title: 'Level B: Nav1', attributes: [gATTR_EXAM], issues: [
-                    {title: 'NAV 1.1', type: gATTR_NOTE, file: 'nav1_1'},
-                    {title: 'TEST NAV 1.1', type: gATTR_EXERCISE, file: 'nav1_1'},
-                    {title: 'NAV 1.2', type: gATTR_NOTE, file: 'nav3_2'},
-                    {title: 'TEST NAV 1.2', type: gATTR_EXERCISE, file: 'nav1_2'},
-                ]},
-                {id: 'nav2', title: 'Level B: Nav2', attributes: [gATTR_DISABLED]},
-                {id: 'nav3', title: 'Level B: Nav3', attributes: [gATTR_EXAM], issues: [
-                    {title: 'NAV 3.1', type: gATTR_NOTE, file: 'nav3_1'},
-                    {title: 'TEST NAV 3.1', type: gATTR_EXERCISE, file: 'nav3_1'},
-                    {title: 'FLASHCARDS NAV 3', type: gATTR_FLASHCARD, file: 'nav3'},
-                    {title: 'TEST NAV 3.2', type: gATTR_EXERCISE, file: 'nav3_2'},
-                ]}
+                {id: 'b_soon', title: 'Notes under construction', attributes: [gATTR_DISABLED]}
             ]
         },
         {
             id: 'lvl_c',
             title: 'Notes for level C: Advanced (C1) | Not inclued: Proficiency (C2)',
             nav: [
-                {id: 'nav1', title: 'Level C: Nav1', attributes: [gATTR_EXAM], issues: [
-                    {title: 'NAV 3.1', type: gATTR_NOTE, file: 'nav3_1'}
-                ]},
-                {id: 'nav2', title: 'Level C: Nav2', attributes: [gATTR_EXAM], issues: [
-                    {title: 'NAV 2.1', type: gATTR_NOTE, file: 'nav2_1'},
-                    {title: 'TEST NAV 2.1', type: gATTR_EXERCISE, file: 'nav2_1'},
-                    {title: 'FLASHCARDS NAV 2', type: gATTR_FLASHCARD, file: 'nav2'}
-                ]},
-                {id: 'nav3', title: 'Level C: Nav3', attributes: [gATTR_DISABLED]}
+                {id: 'c_soon', title: 'Notes under construction', attributes: [gATTR_DISABLED]}
             ]
         }
     ]

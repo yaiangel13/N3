@@ -139,6 +139,7 @@ body {
     background: var(--v_lightGrey);
     display: flex;
     flex: 1 1;
+    flex-wrap: wrap-reverse;
     justify-content: space-between;
     padding: 5px 10px;
 }
@@ -146,7 +147,7 @@ body {
 #note>#notebar>#issues, #note>#notebar>#practice_options, #note>#notebar>#practice_options>*, #note>#notebar>#paginator {
     align-items: center;
     display: flex;
-    flex: 1 1;
+    flex: 0 1;
     justify-content: right;
     gap: 20px;
 }
