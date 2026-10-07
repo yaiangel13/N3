@@ -1,4 +1,4 @@
-# 0.2.13
+# 0.2.14
 - Webapp layout and style definition (#3)
 - Menu structure definition and functionality (#3)
 - Migrated content from K-NOTES (#6)

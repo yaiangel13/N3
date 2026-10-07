@@ -407,6 +407,15 @@ h4 {
     color: var(--v_orange);
 }
 
+/* dialogue */
+.dialogue {
+    list-style-type: none; /* delete · */
+}
+
+.dialogue li::before {
+    content: "- "; /* add - */
+}
+
 /* md files */
 .md_code_line {
     background: var(--v_lightGrey);
