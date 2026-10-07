@@ -79,7 +79,7 @@ gMenu = {
                     {title: 'Quantifiers', type: gATTR_NOTE, file: 'quantifiers'},
                     {title: 'There Be', type: gATTR_NOTE, file: 'there_be'}
                 ]},
-                {id: 'articles', title: 'Adjetives', issues: [
+                {id: 'adjetives', title: 'Adjetives', issues: [
                     {title: 'Adjetives', type: gATTR_NOTE, file: 'adjetives'}
                 ]},
                 {id: 'verbs', title: 'Verbs', issues: [
@@ -97,6 +97,12 @@ gMenu = {
                     {title: 'Present Simple', type: gATTR_NOTE, file: 'simple'},
                     {title: 'Present Continuous', type: gATTR_NOTE, file: 'continuous'},
                     {title: 'Continuous Verb Tenses', type: gATTR_NOTE, file: 'tenses'}
+                ]},
+                {id: 'number_date_time', title: 'Numbers, Dates, Time', issues: [
+                    {title: 'Cardinal Numbers', type: gATTR_NOTE, file: 'cardinal'},
+                    {title: 'Ordinal Numbers', type: gATTR_NOTE, file: 'ordinal'},
+                    {title: 'The Date', type: gATTR_NOTE, file: 'date'},
+                    {title: 'Time', type: gATTR_NOTE, file: 'time'}
                 ]}
             ]
         },
