@@ -94,6 +94,13 @@ gMenu = {
                 ]},
                 {id: 'vocabulary', title: 'Vocabulary', issues: [
                     {title: 'Christmas Vocabulary', type: gATTR_NOTE, file: 'christmas'}
+                ]},
+                {id: 'reading', title: 'Reading Comprehension', issues: [
+                    {title: 'Family', type: gATTR_NOTE, file: 'family'},
+                    {title: 'School', type: gATTR_NOTE, file: 'school'},
+                    {title: 'Weather and Clothes', type: gATTR_NOTE, file: 'weather_clothes'},
+                    {title: 'Sports', type: gATTR_NOTE, file: 'sports'},
+                    {title: 'At the supermarket', type: gATTR_NOTE, file: 'supermarket'}
                 ]}
             ]
         },
