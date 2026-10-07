@@ -119,10 +119,18 @@ setOnChangeIssueSelector = function () {
         var vTriggerValue = pEvent.target.value;
         $v('#issues>#issue_selector>option').nodes.forEach(pNode => {
             if (pNode.innerText == vTriggerValue) {
+                console.log('[LOAD CONTENT TRIGGER] ' + pNode.id);
+                //set current issue
+                gCurrentIssue = pNode.id;
+                console.log('[CURRENT ISSUE] ' + gCurrentIssue);
+
                 //update selected issue icon
                 $v('#issues>#issues_icon').attr('src', pNode.firstChild.src);
                 //enable practice options if proceed
                 setPracticeOptions(([gATTR_EXAM, gATTR_EXERCISE].includes(pNode.dataset.context)) ? true : false);
+
+                //load note content
+                $v($v().MAIN_NOTE_NODE).loadContent(gCurrentIssue);
             }
         });
     });

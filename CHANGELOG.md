@@ -1,3 +1,6 @@
+# 1.0.0
+- `WIP` Content pagination and issue selector
+
 # 0.2.15
 - Webapp layout and style definition (#3)
 - Menu structure definition and functionality (#3)
