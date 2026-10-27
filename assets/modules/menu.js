@@ -1,5 +1,6 @@
 var gCurrentLevel = null;
 var gCurrentIssue = null;
+var gDeepLevel = null;
 
 //clear functions
 clearIssueSelector = function () {
@@ -23,6 +24,7 @@ clearLevel = function () {
     //clear globals
     gCurrentLevel = null;
     gCurrentIssue = null;
+    gDeepLevel = null;
     
     //hide and clear nav + note
     $v('#aside').css('visibility','hidden');
@@ -36,6 +38,7 @@ clearLevel = function () {
 clearNote = function () {
     //clear globals
     gCurrentIssue = null;
+    gDeepLevel = null;
     
     //hide and clear note
     $v('#aside>div.selected').removeClass('selected');
@@ -71,7 +74,60 @@ setPaginartor = function (pEnable) {
     }
 }
 
-setPaginatorClose = function () {
+setPaginatorArrows = function () {
+    var vDeepLevel = gDeepLevel.split('-');
+    var vIssues = gMenu.levels[vDeepLevel[0]].nav[vDeepLevel[1]].issues;
+    var vIssueDeep = (vDeepLevel[2] == undefined) ? 1 : Number(vDeepLevel[2]) + 1;
+
+    //clean disabled
+    $v('#paginator>#paginator_back').removeClass('disabled');
+    $v('#paginator>#paginator_back').removeClass('disabled');
+
+    //if not issued return
+    if (vIssues.length == 0) return;
+
+    //back arrow
+    if (vIssueDeep == 1) $v('#paginator>#paginator_back').addClass('disabled');
+    if (vIssueDeep != 1) $v('#paginator>#paginator_back').removeClass('disabled');
+
+    //forward arrow
+    if (vIssueDeep < vIssues.length) $v('#paginator>#paginator_forward').removeClass('disabled');
+    if (vIssueDeep == vIssues.length) $v('#paginator>#paginator_forward').addClass('disabled');
+}
+
+loadContentForward = function(pForward) {
+    var vDeepLevel = gDeepLevel.split('-');
+    var vIssueDeep = (vDeepLevel[2] == undefined) ? 0 : Number(vDeepLevel[2]);
+    var vNextIssueDeep = (pForward) ? vIssueDeep + 1 : vIssueDeep - 1;
+
+    //get values to make current issue ID
+    var vLevelID = gMenu.levels[vDeepLevel[0]].id;
+    var vNavID = gMenu.levels[vDeepLevel[0]].nav[vDeepLevel[1]].id;
+    var vIssueFile = gMenu.levels[vDeepLevel[0]].nav[vDeepLevel[1]].issues[vNextIssueDeep].file;
+    var vIssueTitle = gMenu.levels[vDeepLevel[0]].nav[vDeepLevel[1]].issues[vNextIssueDeep].title;
+
+    //refresh globals
+    gCurrentIssue = vLevelID + '-' + vNavID + '-' + vIssueFile;
+    gDeepLevel = vDeepLevel[0] + '-' + vDeepLevel[1] + '-' + vNextIssueDeep;
+
+    //load content by triggering the onChange of the issue selector
+    console.log('[loadContentForward][SET NEXT ISSUE][' + gDeepLevel + '] ' + gCurrentIssue);
+    $v('#issues>#issue_selector').value(vIssueTitle);
+    $v('#issues>#issue_selector').triggerEvent('change');
+}
+
+setPaginatorEvents = function () {
+    //back arrow
+    $v('#paginator>#paginator_back').addEvent('click', (pEvent) => {
+        console.log('[setPaginatorEvents][TRIGGER] ' + pEvent.currentTarget.id);
+        loadContentForward(false);
+    });
+    //forward arrow
+    $v('#paginator>#paginator_forward').addEvent('click', (pEvent) => {
+        console.log('[setPaginatorEvents][TRIGGER] ' + pEvent.currentTarget.id);
+        loadContentForward(true);
+    });
+    //close
     $v('#paginator>#paginator_close').addEvent('click', (pEvent) => {
         clearNote();
         clearNoteStatusbar();
@@ -119,34 +175,36 @@ setOnChangeIssueSelector = function () {
         var vTriggerValue = pEvent.target.value;
         $v('#issues>#issue_selector>option').nodes.forEach(pNode => {
             if (pNode.innerText == vTriggerValue) {
-                console.log('[LOAD CONTENT TRIGGER] ' + pNode.id);
+                console.log('[ChangeIssueSelector][LOAD CONTENT TRIGGER] ' + pNode.id);
                 //set current issue
                 gCurrentIssue = pNode.id;
-                console.log('[CURRENT ISSUE] ' + gCurrentIssue);
+                gDeepLevel = pNode.dataset.deeplvl;
 
                 //update selected issue icon
                 $v('#issues>#issues_icon').attr('src', pNode.firstChild.src);
                 //enable practice options if proceed
                 setPracticeOptions(([gATTR_EXAM, gATTR_EXERCISE].includes(pNode.dataset.context)) ? true : false);
-
+                
                 //load note content
+                console.log('[ChangeIssueSelector][CURRENT ISSUE][' +gDeepLevel + '] ' + gCurrentIssue);
                 $v($v().MAIN_NOTE_NODE).loadContent(gCurrentIssue);
+                setPaginatorArrows();
             }
         });
     });
 }
 
-loadIssueSelector = function (pIssues, pNav) {
+loadIssueSelector = function (pIssues, pNav, pDeepLevel) {
     clearIssueSelector();
     
-    pIssues.forEach(pIssue => {
+    pIssues.forEach((pIssue, pIdxIssue) => {
         var vIssueIcon = getIssueSelectorIcon(pIssue.type);
         var vIssueID = getIssuePathByID(pIssue.type, pIssue.file, pNav);
         
         var vOptionElement = $v().createElement({
             label: 'option',
             id: vIssueID,
-            attrs: [{attr: 'data-context', value: pIssue.type}]
+            attrs: [{attr: 'data-context', value: pIssue.type}, {attr: 'data-deeplvl', value: pDeepLevel + '-' + pIdxIssue}]
         });
 
         var vOptionImg = $v().createElement({
@@ -168,8 +226,6 @@ loadIssueSelector = function (pIssues, pNav) {
 
     //update selector icon to match first issue type
     $v('#issues>#issues_icon').attr('src', getIssueSelectorIcon(pIssues[0].type));
-    //set onChange event
-    setOnChangeIssueSelector();
 }
 
 //content functionality
@@ -177,14 +233,15 @@ loadContentEvent = function (pEvent) {
     var vTriggerID = pEvent.currentTarget.id;
     var vContext = $v('#' + vTriggerID).attr('data-context');
     var vDeepLevel = $v('#' + vTriggerID).attr('data-deep').split('-');
+    gDeepLevel = vDeepLevel.join('-');
     
-    console.log('[LOAD CONTENT TRIGGER] ' + vTriggerID);
+    console.log('[loadContentEvent][LOAD CONTENT TRIGGER] ' + vTriggerID);
     if (vContext != gATTR_EXAM) {
         if ($v('#' + vTriggerID).attr('data-issues') == 'true') {
             var vIssues = gMenu.levels[vDeepLevel[0]].nav[vDeepLevel[1]].issues;
             //set current issue to main issue of nav
             gCurrentIssue = getIssuePathByID(vIssues[0].type, vIssues[0].file, vTriggerID);
-            loadIssueSelector(vIssues, vTriggerID);
+            loadIssueSelector(vIssues, vTriggerID, gDeepLevel);
             setPaginartor((vIssues.length > 1) ? true : false);
         } else {
             setPaginartor(false);
@@ -192,7 +249,8 @@ loadContentEvent = function (pEvent) {
     } else {
         setPaginartor(false);
     }
-    console.log('[CURRENT ISSUE] ' + gCurrentIssue);
+
+    console.log('[loadContentEvent][CURRENT ISSUE][' + gDeepLevel + '] ' + gCurrentIssue);
 
     //disable practice options as mostly all context don't use them
     setPracticeOptions(false);
@@ -203,7 +261,7 @@ loadContentEvent = function (pEvent) {
                 title: pEvent.currentTarget.innerHTML,
                 type: vContext,
                 file: vIssues[0].file
-            }]);
+            }], vTriggerID, gDeepLevel);
             //process MD file and break execution
             $v().processMD(vIssues[0].file);
             $v('#note').css('visibility','visible');
@@ -231,6 +289,7 @@ loadContentEvent = function (pEvent) {
 
     $v($v().MAIN_NOTE_NODE).loadContent(gCurrentIssue);
     $v('#note').css('visibility','visible');
+    setPaginatorArrows();
 }
 
 //level functionality
@@ -335,7 +394,7 @@ parseLevelMenu = function () {
 
 loadLevelEvents = function () {
     $v('#statusbar>#status').innerHTML(gDEFAULT_TITLE);
-    setPaginatorClose();
+    setPaginatorEvents();
 
     $v('#options>div').addEvent('click', (pEvent) => {
         var vEventTarget = pEvent.currentTarget.id;
