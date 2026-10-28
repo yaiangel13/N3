@@ -1,3 +1,6 @@
+# 1.1.1
+- `FIXES``SPOTIFY` Startup blocks caused by iframe instantiation
+
 # 1.1.0
 - Content pagination and issue selector (#7)
 - `[v0.2+] KNOWN ISSUE``SPOTIFY` Startup blocks caused by iframe instantiation  `WORKAROUND` Restart N3

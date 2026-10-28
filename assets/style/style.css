@@ -240,11 +240,20 @@ body {
     bottom: 36px;
 }
 
-#n3_helper_wrapper {
+#spotify_wrapper:has(#spotify), #n3_helper_wrapper {
     background: var(--v_grey);
     border: 5px solid var(--v_n3_blue);
     border-radius: 15px;
     bottom: 50px;
+}
+
+#spotify_wrapper:has(#spotify) {
+    text-align: center;
+    padding: 10px;
+    width: auto;
+}
+
+#n3_helper_wrapper {
     /*height: 70vh;*/
     overflow-y: scroll;
 }
