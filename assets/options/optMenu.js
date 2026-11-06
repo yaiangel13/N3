@@ -67,8 +67,8 @@ gMenu = {
                     {title: 'Quantifiers', type: gATTR_NOTE, file: 'quantifiers'},
                     {title: 'There Be', type: gATTR_NOTE, file: 'there_be'}
                 ]},
-                {id: 'adjetives', title: 'Adjetives', issues: [
-                    {title: 'Adjetives', type: gATTR_NOTE, file: 'adjetives'}
+                {id: 'adjectives', title: 'Adjectives', issues: [
+                    {title: 'Adjectives', type: gATTR_NOTE, file: 'adjectives'}
                 ]},
                 {id: 'verbs', title: 'Verbs', issues: [
                     {title: 'Verbs', type: gATTR_NOTE, file: 'basic'},
