@@ -41,8 +41,27 @@ gMenu = {
             ]
         },
         {
-            id: 'lvl_a',
-            title: 'Notes for level A: Movers (A1) & Flyers (A2)',
+            id: 'vocabulary',
+            title: 'N3 - Vocabulary block',
+            nav: [
+                {id: 'numbers', title: 'Numbers', issues: [
+                    {title: 'Cardinal Numbers', type: gATTR_NOTE, file: 'cardinal'},
+                    {title: 'Ordinal Numbers', type: gATTR_NOTE, file: 'ordinal'}
+                ]},
+                {id: 'date', title: 'Dates', issues: [
+                    {title: 'The Date', type: gATTR_NOTE, file: 'date'}
+                ]},
+                {id: 'time', title: 'Time', issues: [
+                    {title: 'Time', type: gATTR_NOTE, file: 'time'}
+                ]},
+                {id: 'christmas', title: 'Christmas Vocabulary', issues: [
+                    {title: 'Christmas Vocabulary', type: gATTR_NOTE, file: 'christmas'}
+                ]}
+            ]
+        },
+        {
+            id: 'grammar',
+            title: 'N3 - Grammar block',
             nav: [
                 {id: 'pronouns', title: 'Pronouns', issues: [
                     {title: 'Personal Pronouns', type: gATTR_NOTE, file: 'personal'},
@@ -54,12 +73,6 @@ gMenu = {
                     {title: 'Definite Article', type: gATTR_NOTE, file: 'definite'},
                     {title: 'Indefinite Article', type: gATTR_NOTE, file: 'indefinite'}
                 ]},
-                {id: 'preposition', title: 'Prepositions', issues: [
-                    {title: 'Basic Prepositions', type: gATTR_NOTE, file: 'basic'},
-                    {title: 'Prepositions of place', type: gATTR_NOTE, file: 'place'},
-                    {title: 'Prepositions of time', type: gATTR_NOTE, file: 'time'},
-                    {title: 'Prepositions of movement', type: gATTR_NOTE, file: 'movement'}
-                ]},
                 {id: 'nouns', title: 'Nouns', issues: [
                     {title: 'Basic Nouns', type: gATTR_NOTE, file: 'nouns'},
                     {title: 'Proper Nouns', type: gATTR_NOTE, file: 'proper'},
@@ -70,6 +83,16 @@ gMenu = {
                 {id: 'adjectives', title: 'Adjectives', issues: [
                     {title: 'Adjectives', type: gATTR_NOTE, file: 'adjectives'}
                 ]},
+                {id: 'preposition', title: 'Prepositions', issues: [
+                    {title: 'Basic Prepositions', type: gATTR_NOTE, file: 'basic'},
+                    {title: 'Prepositions of place', type: gATTR_NOTE, file: 'place'},
+                    {title: 'Prepositions of time', type: gATTR_NOTE, file: 'time'},
+                    {title: 'Prepositions of movement', type: gATTR_NOTE, file: 'movement'}
+                ]},
+                {id: 'sentence_structure', title: 'Sentence Structure', issues: [
+                    {title: 'Constructing sentences', type: gATTR_NOTE, file: 'constructing'},
+                    {title: 'Imperative Sentences', type: gATTR_NOTE, file: 'imperative'}
+                ]},
                 {id: 'verbs', title: 'Verbs', issues: [
                     {title: 'Verbs', type: gATTR_NOTE, file: 'basic'},
                     {title: 'To Be', type: gATTR_NOTE, file: 'to_be'},
@@ -77,45 +100,32 @@ gMenu = {
                     {title: 'Have / Have got', type: gATTR_NOTE, file: 'have'},
                     {title: 'Modal Verbs', type: gATTR_NOTE, file: 'modal'}
                 ]},
-                {id: 'sentence_structure', title: 'Sentence Structure', issues: [
-                    {title: 'Constructing sentences', type: gATTR_NOTE, file: 'constructing'},
-                    {title: 'Imperative Sentences', type: gATTR_NOTE, file: 'imperative'}
-                ]},
                 {id: 'present', title: 'Verbs Tenses: Present', issues: [
                     {title: 'Present Simple', type: gATTR_NOTE, file: 'simple'},
                     {title: 'Present Continuous', type: gATTR_NOTE, file: 'continuous'},
                     {title: 'Continuous Verb Tenses', type: gATTR_NOTE, file: 'tenses'}
-                ]},
-                {id: 'number_date_time', title: 'Numbers, Dates, Time', issues: [
-                    {title: 'Cardinal Numbers', type: gATTR_NOTE, file: 'cardinal'},
-                    {title: 'Ordinal Numbers', type: gATTR_NOTE, file: 'ordinal'},
-                    {title: 'The Date', type: gATTR_NOTE, file: 'date'},
-                    {title: 'Time', type: gATTR_NOTE, file: 'time'}
-                ]},
-                {id: 'vocabulary', title: 'Vocabulary', issues: [
-                    {title: 'Christmas Vocabulary', type: gATTR_NOTE, file: 'christmas'}
-                ]},
-                {id: 'reading', title: 'Reading Comprehension', issues: [
-                    {title: 'Family', type: gATTR_NOTE, file: 'family'},
-                    {title: 'School', type: gATTR_NOTE, file: 'school'},
-                    {title: 'Weather and Clothes', type: gATTR_NOTE, file: 'weather_clothes'},
-                    {title: 'Sports', type: gATTR_NOTE, file: 'sports'},
-                    {title: 'At the supermarket', type: gATTR_NOTE, file: 'supermarket'}
                 ]}
             ]
         },
         {
-            id: 'lvl_b',
-            title: 'Notes for level B: Preliminary (B1) & First (B2)',
+            id: 'reading',
+            title: 'N3 - Reading block',
             nav: [
-                {id: 'b_soon', title: 'Notes under construction', attributes: [gATTR_DISABLED]}
-            ]
-        },
-        {
-            id: 'lvl_c',
-            title: 'Notes for level C: Advanced (C1) | Not inclued: Proficiency (C2)',
-            nav: [
-                {id: 'c_soon', title: 'Notes under construction', attributes: [gATTR_DISABLED]}
+                {id: 'family', title: 'Family', issues: [
+                    {title: 'Family', type: gATTR_NOTE, file: 'family'}
+                ]},
+                {id: 'school', title: 'School', issues: [
+                    {title: 'School', type: gATTR_NOTE, file: 'school'}
+                ]},
+                {id: 'weather_clothes', title: 'Weather and Clothes', issues: [
+                    {title: 'Weather and Clothes', type: gATTR_NOTE, file: 'weather_clothes'}
+                ]},
+                {id: 'sports', title: 'Sports', issues: [
+                    {title: 'Sports', type: gATTR_NOTE, file: 'sports'}
+                ]},
+                {id: 'supermarket', title: 'At the supermarket', issues: [
+                    {title: 'At the supermarket', type: gATTR_NOTE, file: 'supermarket'}
+                ]}
             ]
         }
     ]
