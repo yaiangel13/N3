@@ -1,5 +1,5 @@
 # 2.0.0
-- Reorganize Cambridge level structure (A, B, C) to classic block structure (Vocabulary, Grammar, Reading) (#2)
+- Reorganize Cambridge level structure (A, B, C) to classic block structure (Vocabulary, Grammar, Reading) with updated menu icons (#2)
 
 # 1.1.1
 - `FIXES``SPOTIFY` Startup blocking issues caused by iFrame instantiation
